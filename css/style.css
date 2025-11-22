@@ -313,6 +313,14 @@ img {
   text-align: center;
 }
 
+.icon-img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  filter: grayscale(0%);
+  stroke: var(--color-black);
+}
+
 .aprendizaje-item p {
   font-size: 1rem;
   font-weight: 500;
@@ -335,29 +343,30 @@ img {
   margin-bottom: 0;
 }
 
-.curso-estructura {
+.curso-programa {
   margin-bottom: 5rem;
 }
 
-.curso-estructura h3 {
+.curso-programa h3 {
   text-align: center;
   margin-bottom: 3rem;
 }
 
-.estructura-grid {
+.programa-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  margin-bottom: 3rem;
 }
 
-.estructura-card {
+.programa-card {
   background: var(--color-gray-light);
   padding: 3rem 2rem;
   border-radius: var(--border-radius);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.estructura-card:hover {
+.programa-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
@@ -369,26 +378,38 @@ img {
   margin-bottom: 1.5rem;
 }
 
-.estructura-card ul {
-  list-style: none;
+.programa-schedule {
+  text-align: left;
 }
 
-.estructura-card li {
-  font-size: 1rem;
+.programa-schedule p {
+  font-size: 0.95rem;
   line-height: 1.8;
   color: var(--color-gray-dark);
-  padding-left: 1.5rem;
-  position: relative;
   margin-bottom: 0.75rem;
 }
 
-.estructura-card li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
+.programa-schedule strong {
   color: var(--color-black);
-  font-weight: 700;
-  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.programa-extras {
+  text-align: center;
+  padding: 2rem;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-gray-medium);
+}
+
+.extra-item {
+  font-size: 1.0625rem;
+  color: var(--color-black);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.extra-item:last-child {
+  margin-bottom: 0;
 }
 
 .curso-info {
@@ -482,46 +503,71 @@ img {
   padding: var(--spacing-xl) 0;
 }
 
-.guia-content {
+.guia-intro {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  grid-template-columns: 300px 1fr;
+  gap: 4rem;
   align-items: center;
+  margin-bottom: 5rem;
 }
 
-.guia-image img {
+.guia-intro-image img {
   width: 100%;
-  border-radius: var(--border-radius);
+  border-radius: 8px;
 }
 
-.guia-text p {
+.guia-intro-text h2 {
+  margin-bottom: 1.5rem;
+}
+
+.guia-intro-text p {
   font-size: 1.0625rem;
   line-height: 1.7;
   margin-bottom: 2rem;
 }
 
-.guia-contenido h3 {
-  margin-top: 3rem;
-  margin-bottom: 2rem;
+.guia-contenido {
+  margin-bottom: 5rem;
+  text-align: center;
 }
 
-.contenido-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.guia-contenido h3 {
+  margin-bottom: 2.5rem;
+}
+
+.contenido-list {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contenido-list li {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--color-gray-dark);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-gray-medium);
+}
+
+.contenido-list li:last-child {
+  border-bottom: none;
+}
+
+.guia-final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 2rem;
 }
 
-.contenido-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.guia-final-image {
+  max-width: 300px;
+  width: 100%;
 }
 
-.contenido-item p {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--color-black);
-  margin: 0;
+.guia-final-image img {
+  width: 100%;
+  border-radius: 8px;
 }
 
 /* FORMADORAS SECTION */
@@ -552,12 +598,6 @@ img {
   border-radius: var(--border-radius);
 }
 
-/* CTA FINAL */
-.cta-final {
-  background: var(--color-gray-light);
-  padding: var(--spacing-xl) 0;
-  text-align: center;
-}
 
 /* FOOTER */
 .footer {
@@ -577,7 +617,6 @@ img {
 @media (max-width: 1024px) {
   .hero-content,
   .quien-soy-content,
-  .guia-content,
   .formadoras-content {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -590,12 +629,22 @@ img {
     margin: 0 auto;
   }
 
-  .estructura-grid {
+  .programa-grid {
     grid-template-columns: 1fr;
   }
 
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .guia-intro {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .guia-intro-image {
+    max-width: 300px;
+    margin: 0 auto;
   }
 }
 
@@ -623,10 +672,13 @@ img {
 
   .benefits-grid,
   .aprendizaje-grid,
-  .contenido-grid,
   .info-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .programa-grid {
+    grid-template-columns: 1fr;
   }
 
   .curso-info {
@@ -635,6 +687,10 @@ img {
 
   .gallery-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery-item {
+    max-height: 300px;
   }
 
   .btn-primary,
@@ -651,6 +707,19 @@ img {
     order: -1;
     max-width: 400px;
     margin: 0 auto;
+  }
+
+  .guia-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .guia-intro-image {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .guia-final-image {
+    max-width: 250px;
   }
 }
 
